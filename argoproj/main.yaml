@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  annotations:
+    argocd-image-updater.argoproj.io/image-list: gitops-demo-app=punkerside/gitops-demo-app
+    argocd-image-updater.argoproj.io/gitops-demo-app.update-strategy: latest
+    argocd-image-updater.argoproj.io/gitops-demo-app.ignore-tags: "latest"
+  name: gitops-demo-app
+  namespace: argocd
+spec:
+  destination:
+    namespace: default
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: helm-guestbook
+    repoURL: https://github.com/argocd-example-apps/argocd-example-apps
+    targetRevision: HEAD

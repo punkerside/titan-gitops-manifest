@@ -1,0 +1,4 @@
+image:
+  repository: punkerside/gitops-demo-app
+  tag: 4514602282
+  pullPolicy: IfNotPresent
